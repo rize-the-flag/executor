@@ -1,9 +1,9 @@
-import {FfmpegExecutor} from "./core/ffmpeg/ffmpeg.executor";
 import {ConsoleLogger} from "./out/console-logger";
+import {DirExecutor} from "./core/dir/dir.executor";
 
 export class App {
     async run() {
-        new FfmpegExecutor(ConsoleLogger.getInstance()).execute();
+        new DirExecutor(ConsoleLogger.getInstance()).execute();
     }
 }
 
