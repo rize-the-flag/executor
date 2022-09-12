@@ -2,7 +2,9 @@ import {ChildProcessWithoutNullStreams} from "child_process";
 import {IStreamLogger} from "./stream-logger.interface";
 
 export class StreamHandler {
-    constructor(private logger: IStreamLogger) {}
+    constructor(private logger: IStreamLogger) {
+    }
+
     processOutput(stream: ChildProcessWithoutNullStreams) {
         stream.stdout.on('data', (data: any) => {
             this.logger.log(data);
@@ -12,7 +14,7 @@ export class StreamHandler {
             this.logger.error(data);
         })
 
-        stream.on('close', (data: any) => {
+        stream.on('close', () => {
             this.logger.end();
         })
     }
